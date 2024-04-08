@@ -26,9 +26,9 @@ urlpatterns = [
    
     path('medi_track/schema/',SpectacularAPIView.as_view(),name='schema'),
     path('medi_track/schema/docs/',SpectacularSwaggerView.as_view(url_name='schema')),
+    
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  
 
-]
-
-if  settings.DEBUG:
-    urlpatterns +=static(settings.MEDIA_URL, documents_root=settings.MEDIA_ROOT)
-    urlpatterns +=static(settings.STATIC_URL, documents_root=settings.STATIC_ROOT)
+# if  settings.DEBUG:
+#     urlpatterns +=
+#     urlpatterns +=static(settings.STATIC_URL, documents_root=settings.STATIC_ROOT)

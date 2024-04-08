@@ -32,7 +32,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=30, unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    is_patient = models.BooleanField('employee status',default=False)
+    is_patient = models.BooleanField('patient status',default=False)
 
     objects = CustomUserManager()
 
@@ -46,7 +46,7 @@ class Hospital(models.Model):
     name = models.CharField(max_length=255,null=True, blank=True)
     address = models.CharField(max_length=255, null=True, blank=True)
     contact_information = models.CharField(max_length=255, null=True, blank=True)
-    image = models.ImageField(upload_to='hospital_images/', null=True, blank=True)
+    image = models.ImageField(upload_to='hospital_images', null=True, blank=True)
     rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
@@ -55,7 +55,7 @@ class Hospital(models.Model):
 class Department(models.Model):
     department_name = models.CharField(max_length=255, )
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='department_images/', null=True, blank=True)
+    image = models.ImageField(upload_to='department_images', null=True, blank=True)
     
     def __str__(self):
         return f"hospital: {self.hospital} | department: {self.department_name}"
@@ -67,7 +67,7 @@ class Doctor(models.Model):
     # hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE,)
     hospital_and_department= models.ForeignKey(Department, on_delete=models.CASCADE, null=True, blank=True)
     degree = models.CharField(max_length=255, null=True, blank=True)
-    image = models.ImageField(upload_to='doctor_images/', null=True, blank=True)
+    image = models.ImageField(upload_to='doctor_images', null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     experience = models.PositiveIntegerField(null=True, blank=True)
     rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True)

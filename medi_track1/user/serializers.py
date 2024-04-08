@@ -80,7 +80,8 @@ class DepartmentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class DoctorsSerializer(serializers.ModelSerializer):
-    hospital_and_department=DepartmentSerializer()
+    # hospital_and_department=DepartmentSerializer()
+    # image=serializers.ImageField(max_length=None,use_url=True,required=False)
     class Meta:
         model = Doctor
         fields = "__all__"

@@ -118,7 +118,7 @@ class AvailableSlotsAPIView(APIView):
             serializer = AvailableSlotsSerializer(all_time_slots, many=True)
             return Response({"status":1,"data":serializer.data}, status=status.HTTP_200_OK)
         except :
-            return Response({"status":0,"errors":"something went wrong"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"status":0,"error":"something went wrong"}, status=status.HTTP_404_NOT_FOUND)
 
 
 class BookAppointmentAPIView(APIView):
@@ -144,7 +144,7 @@ class BookAppointmentAPIView(APIView):
                 return Response({"status": 1, "data": serializer.data}, status=status.HTTP_201_CREATED)
             return Response({"status": 0, "error": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         except:
-            return Response({"status": 0,"data":"Something went wrong"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"status": 0,"error":"Something went wrong"}, status=status.HTTP_404_NOT_FOUND)
         
         
         
@@ -158,7 +158,7 @@ class ListPatientAppointmentsAPIView(APIView):
             
             return Response({"status":1,"data":serializer.data}, status=status.HTTP_200_OK)
         except:
-            return Response({"status":0,"data":"Something went wrong"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"status":0,"error":"Something went wrong"}, status=status.HTTP_404_NOT_FOUND)
 
 
 
